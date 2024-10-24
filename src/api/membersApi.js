@@ -44,6 +44,22 @@ export const postLogin = async (form) => {
   }
 };
 
+export const getMembersByCondition = async (condition, page = 1, size = 10) => {
+  try {
+    const response = await axios.get(`${prefix}/list`, {
+      params: {
+        page: page,
+        size: size,
+        searchCondition: condition,
+      },
+    });
+    return response.data; // 응답 데이터 반환
+  } catch (error) {
+    console.error("특정 검색 오류:", error);
+    throw error; // 오류를 호출한 곳으로 전달
+  }
+};
+
 //아이디 중복 체크
 export const checkId = async (id) => {
   try {

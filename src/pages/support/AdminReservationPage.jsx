@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllReservations } from "../../api/reservationApi";
+import { getAdminAllReservations } from "../../api/reservationApi";
 
 const AdminReservationPage = () => {
   const [reservations, setReservations] = useState([]);
@@ -9,7 +9,7 @@ const AdminReservationPage = () => {
   useEffect(() => {
     const fetchReservations = async () => {
       try {
-        const response = await getAllReservations();
+        const response = await getAdminAllReservations();
         setReservations(response.content || []);
       } catch (error) {
         setError(error);
